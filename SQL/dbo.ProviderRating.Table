@@ -1,0 +1,28 @@
+USE [Ojala]
+GO
+/****** Object:  Table [dbo].[ProviderRating]    Script Date: 8/14/2024 11:07:11 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ProviderRating](
+	[ProviderId] [int] NOT NULL,
+	[Rating] [int] NOT NULL,
+	[ConsumerId] [int] NOT NULL,
+ CONSTRAINT [PK_ProviderRating] PRIMARY KEY CLUSTERED 
+(
+	[ProviderId] ASC,
+	[ConsumerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[ProviderRating]  WITH CHECK ADD  CONSTRAINT [FK_ProviderRating_Users] FOREIGN KEY([ProviderId])
+REFERENCES [dbo].[Users] ([Id])
+GO
+ALTER TABLE [dbo].[ProviderRating] CHECK CONSTRAINT [FK_ProviderRating_Users]
+GO
+ALTER TABLE [dbo].[ProviderRating]  WITH CHECK ADD  CONSTRAINT [FK_ProviderRating_Users1] FOREIGN KEY([ConsumerId])
+REFERENCES [dbo].[Users] ([Id])
+GO
+ALTER TABLE [dbo].[ProviderRating] CHECK CONSTRAINT [FK_ProviderRating_Users1]
+GO
